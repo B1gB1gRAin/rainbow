@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.bigbigrain.mapper.SpecificationMapper">
+
+    <!-- 通用查询映射结果 -->
+    <resultMap id="BaseResultMap" type="com.bigbigrain.entity.Specification">
+        <id column="id" property="id" />
+        <result column="spec_name" property="specName" />
+    </resultMap>
+
+    <!-- 通用查询结果列 -->
+    <sql id="Base_Column_List">
+        id, spec_name
+    </sql>
+    
+    <resultMap type="com.bigbigrain.entity.Specification" id="specificationMap">
+	
+		<id column="spId" property="id"/>
+		<result column="spName" property="specName"/>
+		
+		<collection property="options" ofType="com.bigbigrain.entity.SpecificationOption">
+			<id column="id" property="id"/>
+			<result column="option_name" property="optionName"/>
+			<result column="spec_id" property="specId"/>
+			<result column="orders" property="orders"/>
+		</collection>
+	</resultMap>
+	
+    <!-- 根据id查询 规格及规格选项 -->
+    <select id="selectCascade" parameterType="long" resultMap="specificationMap">
+    	SELECT
+			sp.id spId,sp.spec_name spName, 
+			sp_option.*
+		FROM
+			tb_specification sp,
+			tb_specification_option sp_option
+		WHERE
+			sp.id = sp_option.spec_id
+			AND sp.id = #{spId}
+    </select>
+	
+	<!-- 查询规格 -->
+	<select id="selectOptionList" resultType="java.util.Map">
+		select id, spec_name text from tb_specification
+	</select>
+</mapper>

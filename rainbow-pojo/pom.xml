@@ -1,0 +1,22 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <parent>
+    <groupId>com.bigbigrain</groupId>
+    <artifactId>rainbow-parent</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+  </parent>
+  <artifactId>rainbow-pojo</artifactId>
+  <dependencies>
+  	<!-- 由于实体中使用了mybatis-plus相关的注解 故这里引入mybatis-plus相关的包 -->
+  	<dependency>
+		<groupId>com.baomidou</groupId>
+		<artifactId>mybatis-plus</artifactId>	  <!-- mybatis-plus Mybatis增强辅助工具 -->
+	</dependency>
+	<!-- Apache velocity -->
+	<!-- 使用Velocity 模板引擎快速生成代码 -->
+	<dependency>
+	    <groupId>org.apache.velocity</groupId>
+	    <artifactId>velocity-engine-core</artifactId>
+	</dependency>
+  </dependencies>
+</project>

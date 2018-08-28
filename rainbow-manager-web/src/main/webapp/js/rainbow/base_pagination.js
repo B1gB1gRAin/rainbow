@@ -1,0 +1,1 @@
+var myApp=angular.module('rainbow',['pagination']);//定义了一个叫myApp的模块,并引入分页模块
