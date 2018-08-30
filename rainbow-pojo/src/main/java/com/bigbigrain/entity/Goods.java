@@ -2,6 +2,7 @@ package com.bigbigrain.entity;
 
 import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.List;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -89,6 +90,9 @@ public class Goods implements Serializable {
 
     @TableField(exist=false)
     private GoodsDesc goodsDesc;
+    
+    @TableField(exist=false)
+    private List<Item> itemList;
 
     public Long getId() {
         return id;
@@ -226,6 +230,14 @@ public class Goods implements Serializable {
 		this.goodsDesc = goodsDesc;
 	}
 
+	public List<Item> getItemList() {
+		return itemList;
+	}
+
+	public void setItemList(List<Item> itemList) {
+		this.itemList = itemList;
+	}
+
 	@Override
 	public String toString() {
 		return "Goods [id=" + id + ", sellerId=" + sellerId + ", goodsName=" + goodsName + ", defaultItemId="
@@ -233,7 +245,7 @@ public class Goods implements Serializable {
 				+ brandId + ", caption=" + caption + ", category1Id=" + category1Id + ", category2Id=" + category2Id
 				+ ", category3Id=" + category3Id + ", smallPic=" + smallPic + ", price=" + price + ", typeTemplateId="
 				+ typeTemplateId + ", isEnableSpec=" + isEnableSpec + ", isDelete=" + isDelete + ", goodsDesc="
-				+ goodsDesc + "]";
+				+ goodsDesc + ", itemList=" + itemList + "]";
 	}
 
 }

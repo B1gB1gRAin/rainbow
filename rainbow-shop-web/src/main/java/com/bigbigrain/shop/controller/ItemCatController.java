@@ -30,6 +30,11 @@ public class ItemCatController  extends BaseController{
 	@Reference
 	private IItemCatService iItemCatService;
 	
+	@RequestMapping(value="/findAll")
+	public List<ItemCat> findAll(){
+		return iItemCatService.selectList(null);
+	}
+	
 	@RequestMapping(value="findByParentId")
 	public List<ItemCat> findByParentId(Long parentId){
 		Wrapper<ItemCat> wrapper = new EntityWrapper<ItemCat>();

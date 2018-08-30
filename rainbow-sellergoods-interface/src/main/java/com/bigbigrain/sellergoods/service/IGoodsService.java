@@ -12,5 +12,7 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2018-08-04
  */
 public interface IGoodsService extends IService<Goods> {
-	Boolean saveCascade(Goods goods);
+	Boolean saveCascade(Goods goods) throws Exception;
+	
+	Goods findCascade(Long id);
 }

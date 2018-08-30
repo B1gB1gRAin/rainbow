@@ -1,0 +1,1 @@
+var myApp=angular.module('rainbow',[]);//定义了一个叫myApp的模块,不引入其他模块

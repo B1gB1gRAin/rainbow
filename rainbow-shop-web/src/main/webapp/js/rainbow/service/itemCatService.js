@@ -1,5 +1,10 @@
 //服务层
 myApp.service('itemCatService',function($http){
+	
+	this.findAll = function(){
+		return $http.get("/itemCat/findAll.do");
+	}
+	
 	//根据parentId查询分类
 	this.findByParentId = function(parentId){
 		return $http.get('/itemCat/findByParentId.do?parentId='+parentId);

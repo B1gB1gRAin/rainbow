@@ -35,13 +35,13 @@
     
 </head>
 
-<body class="hold-transition skin-red sidebar-mini" ng-app="rainbow" ng-controller="goodsController" ng-init="selectItemCat1List()">
+<body class="hold-transition skin-red sidebar-mini" ng-app="rainbow" ng-controller="goodsController" ng-init="selectItemCat1List();find()">
 
             <!-- 正文区域 -->
             <section class="content">
 
                 <div class="box-body">
-
+					{{goods}}
                     <!--tab页-->
                     <div class="nav-tabs-custom">
 
@@ -98,7 +98,7 @@
 		                           
 		                           <div class="col-md-2 title">品牌</div>
 		                           <div class="col-md-10 data">
-		                              <select class="form-control" ng-model="gooods.brandId" ng-options="brand.id as brand.text for brand in typeTemplate.brandIds"></select>
+		                              <select class="form-control" ng-model="goods.brandId" ng-options="brand.id as brand.text for brand in typeTemplate.brandIds"></select>
 		                           </div>
 		
 								   <div class="col-md-2 title">副标题</div>
@@ -178,6 +178,7 @@
 				                        </div>
 	                                </div>       
                                 </div>
+                                {{goods.goodsDesc.customAttributeItems}}
                             </div>
                       
                             <!--规格-->
@@ -185,18 +186,18 @@
                             	<div class="row data-type">
 	                            	<div class="col-md-2 title">是否启用规格</div>
 			                        <div class="col-md-10 data">
-			                        	<input type="checkbox" >			                           
+			                        	<input type="checkbox" ng-model="goods.isEnableSpec" ng-true-value="1" ng-false-value="0">			                           
 			                        </div>
                             	</div>
                             	<p>
                             	
-                            	<div>
+                            	<div ng-if="goods.isEnableSpec=='1'">
 	                                <div class="row data-type">
 		                                <div ng-repeat="pojo in specList">
 			                                <div class="col-md-2 title">{{pojo.text}}</div>
 					                        <div class="col-md-10 data">
 					                            <span ng-repeat="option in pojo.options">
-					                            	<input  type="checkbox" ng-click="updateSpecAttribute($event,pojo.text,option.optionName);createItemList()">{{option.optionName}}					                            				                            	
+					                            	<input  type="checkbox" ng-click="updateSpecAttribute($event,pojo.text,option.optionName);createItemList()" ng-checked="checkAttributeValue(pojo.text,option.optionName)">{{option.optionName}}					                            				                            	
 					                            </span>  	
 					                        </div>
 		                                </div>   
@@ -208,7 +209,7 @@
 	                                	 <table class="table table-bordered table-striped table-hover dataTable">
 						                    <thead>
 						                        <tr>					                          
-												    <th class="sorting" ng-repeat="item in entity.goodsDesc.specificationItems">
+												    <th class="sorting" ng-repeat="item in goods.goodsDesc.specificationItems">
 												    	{{item.attributeName}}
 												    </th>
 												    <th class="sorting">价格</th>
@@ -256,7 +257,7 @@
                    </div>
                   <div class="btn-toolbar list-toolbar">
 				      <button class="btn btn-primary" ng-click="save()"><i class="fa fa-save"></i>保存</button>
-				      <button class="btn btn-default" >返回列表</button>
+				      <a href="/admin/goods.html"class="btn btn-default">返回列表</a>
 				  </div>
 			
             </section>

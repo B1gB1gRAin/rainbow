@@ -99,6 +99,11 @@
 		<artifactId>rainbow-common</artifactId>
 		<version>0.0.1-SNAPSHOT</version>
 	</dependency>
+	<dependency>
+		<groupId>com.bigbigrain</groupId>
+		<artifactId>rainbow-content-interface</artifactId>
+		<version>0.0.1-SNAPSHOT</version>
+	</dependency>
     </dependencies>
   
   

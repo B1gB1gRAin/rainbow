@@ -12,5 +12,5 @@ import com.baomidou.mybatisplus.service.IService;
  * @since 2018-08-04
  */
 public interface ISellerService extends IService<Seller> {
-
+	Seller selectBySellerId(String sellerId);
 }

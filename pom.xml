@@ -13,6 +13,9 @@
   	<module>rainbow-sellergoods-service</module>
   	<module>rainbow-sellergoods-interface</module>
   	<module>rainbow-code-generator</module>
+  	<module>rainbow-content-interface</module>
+  	<module>rainbow-content-service</module>
+  	<module>rainbow-port-web</module>
   </modules>
   
   <!-- 集中定义依赖版本号 -->
