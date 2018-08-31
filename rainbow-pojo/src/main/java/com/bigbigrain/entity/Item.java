@@ -3,6 +3,10 @@ package com.bigbigrain.entity;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.util.Date;
+import java.util.Map;
+
+import org.apache.solr.client.solrj.beans.Field;
+import org.springframework.data.solr.core.mapping.Dynamic;
 
 import com.baomidou.mybatisplus.annotations.TableField;
 import com.baomidou.mybatisplus.annotations.TableId;
@@ -81,7 +85,11 @@ public class Item implements Serializable {
     private String spec;
     private String seller;
 
-
+    @TableField(exist=false)
+    @Dynamic
+    @Field("item_spec_*")
+    private Map<String,String> specMap;
+    
     public Long getId() {
         return id;
     }
@@ -266,7 +274,15 @@ public class Item implements Serializable {
         this.seller = seller;
     }
 
-    @Override
+    public Map<String, String> getSpecMap() {
+		return specMap;
+	}
+
+	public void setSpecMap(Map<String, String> specMap) {
+		this.specMap = specMap;
+	}
+
+	@Override
     public String toString() {
         return "Item{" +
         ", id=" + id +

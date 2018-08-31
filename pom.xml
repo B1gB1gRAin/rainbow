@@ -16,6 +16,7 @@
   	<module>rainbow-content-interface</module>
   	<module>rainbow-content-service</module>
   	<module>rainbow-port-web</module>
+  	<module>rainbow-solr-util</module>
   </modules>
   
   <!-- 集中定义依赖版本号 -->
